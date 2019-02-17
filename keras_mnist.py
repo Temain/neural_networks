@@ -23,5 +23,5 @@ print(model.summary())
 model.fit(x_train, y_train, batch_size=200, epochs=100, verbose=1)
 
 # Проверка
-# predictions = model.predict(x_train)
-# predictions = np_utils.categorical_probas_to_classes(predictions)
+predictions = model.predict(x_train)
+predictions = np_utils.categorical_probas_to_classes(predictions)
