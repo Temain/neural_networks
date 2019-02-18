@@ -14,7 +14,6 @@
 import re
 
 print("Reading file...")
-
 with open('techno.txt', 'r') as f:
     text = f.read()
 
@@ -23,9 +22,9 @@ print(sentences[0])
 print(len(sentences))
 
 text_lower = text.lower()
-text_clear = re.sub('[^a-zA-Z\\s]+', '', text_lower)
+text_clear = re.sub('[^a-zA-Z\\s]+', '', text_lower).replace('\r', '').replace('\n', '')
 words_list = text_clear.split(' ')
 words = sorted(set(words_list))
-for word in words:
-    print(word)
+for index, word in enumerate(words):
+    print("Index: {}, Word: {}".format(index, word))
 print(len(words))
