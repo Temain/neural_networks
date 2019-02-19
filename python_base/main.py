@@ -31,12 +31,11 @@ for char in chars_keys:
     freq = round(chars[char] / len(words), 2)
     results.append("'{}' : {}".format(char, freq))
 
+# Cross-validation
 k = 5
 generator = Statistic.cross_valid(k, sentences)
-test, train = next(generator)
-print(test)
-test, train = next(generator)
-print(test)
+for i in range(0, k):
+    test, train = next(generator)
 
 with open('result.txt', 'w') as f:
     f.write("\n".join(results))
