@@ -7,7 +7,7 @@ class Statistic:
         return round(numpy.average(list(map(lambda x: len(x), str_list))))
 
     @staticmethod
-    def freq(text):
+    def frequency(text):
         chars = {}
         for char in text:
             if char in chars:
@@ -19,9 +19,11 @@ class Statistic:
     @staticmethod
     def cross_valid(k, str_list):
         i = 0
+        part = 0
         print("Total:", len(str_list))
         while True:
             i = i + 1
-            part = int((len(str_list) / (k + 1)) * i)
-            print("Delimiter index:", part)
-            yield str_list[:part], str_list[part:]
+            prev = part
+            part = int((len(str_list) / k) * i)
+            print("Indexes interval:", prev, part)
+            yield str_list[prev:part], str_list[0:prev] + str_list[part:]

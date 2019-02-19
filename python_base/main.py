@@ -24,7 +24,7 @@ results = [
     "Words average length: ".format(Statistic.average(words))
 ]
 
-chars = Statistic.freq(text)
+chars = Statistic.frequency(text)
 results.append("Frequency of chars: ")
 chars_keys = sorted(chars, key=lambda x: chars[x], reverse=True)
 for char in chars_keys:
@@ -33,9 +33,10 @@ for char in chars_keys:
 
 k = 5
 generator = Statistic.cross_valid(k, sentences)
-for i in range(0, k):
-    test, train = next(generator)
-    print(test)
+test, train = next(generator)
+print(test)
+test, train = next(generator)
+print(test)
 
 with open('result.txt', 'w') as f:
     f.write("\n".join(results))
